@@ -64,6 +64,7 @@ export const AuthProvider = ({ children }) => {
 
             if (!cookies.token) {
                 setIsAuthenticated(false);
+                setLoading(false);
                 return setUser(null);
             }
             try {
@@ -73,6 +74,7 @@ export const AuthProvider = ({ children }) => {
                 if (!res.data) {
                     setIsAuthenticated(false);
                     setLoading(false);
+                    return;
                 }
                 setIsAuthenticated(true);
                 setUser(res.data);
